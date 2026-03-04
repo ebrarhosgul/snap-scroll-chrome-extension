@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnapScroll</title>
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SnapScroll</h1>
+    </header>
+    
+    <main>
+      <div id="status-container" class="status-container">
+        <!-- Content injected via TS -->
+        <p class="loading">Checking status...</p>
+      </div>
+      
+      <div class="actions">
+        <button id="btn-jump" class="btn btn-primary hidden">Jump to Checkpoint</button>
+        <button id="btn-save" class="btn hidden">Save Here</button>
+        <button id="btn-delete" class="btn btn-danger hidden">Delete Checkpoint</button>
+      </div>
+
+      <div class="shortcuts">
+        <div class="shortcut-row">
+          <span>Save/Update:</span>
+          <kbd>Alt+Shift+S</kbd>
+        </div>
+        <div class="shortcut-row">
+          <span>Jump back:</span>
+          <kbd>Alt+Shift+J</kbd>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script type="module" src="./popup.ts"></script>
+</body>
+</html>
