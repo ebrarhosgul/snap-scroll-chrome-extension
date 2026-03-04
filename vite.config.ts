@@ -20,6 +20,12 @@ export default defineConfig({
             return 'content/index.js';
           }
           return 'assets/[name]-[hash].js';
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.names && assetInfo.names.some(n => n.endsWith('.css'))) {
+            return 'content/style.css';
+          }
+          return 'assets/[name]-[hash].[ext]';
         }
       }
     }

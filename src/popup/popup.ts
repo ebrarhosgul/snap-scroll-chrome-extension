@@ -6,7 +6,7 @@ const btnJump = document.getElementById('btn-jump') as HTMLButtonElement;
 const btnSave = document.getElementById('btn-save') as HTMLButtonElement;
 const btnDelete = document.getElementById('btn-delete') as HTMLButtonElement;
 
-const sendActionToContentScript = async (action: 'SAVE_CHECKPOINT' | 'JUMP_CHECKPOINT') => {
+const sendActionToContentScript = async (action: 'save_checkpoint' | 'jump_checkpoint') => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   if (tab?.id) {
@@ -84,13 +84,13 @@ const renderError = (message: string) => {
 }
 
 btnSave.addEventListener('click', async () => {
-  await sendActionToContentScript('SAVE_CHECKPOINT');
+  await sendActionToContentScript('save_checkpoint');
 
   window.close();
 });
 
 btnJump.addEventListener('click', async () => {
-  await sendActionToContentScript('JUMP_CHECKPOINT');
+  await sendActionToContentScript('jump_checkpoint');
 
   window.close();
 });
