@@ -21,3 +21,7 @@ export const getCheckpoint = async (url: string): Promise<Checkpoint | null> => 
   
   return checkpoint;
 };
+
+export const deleteCheckpoint = async (url: string): Promise<void> => {
+  await chrome.storage.local.remove(url);
+};

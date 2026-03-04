@@ -84,5 +84,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
         } catch (error) {
             console.error('SnapScroll: Failed to get checkpoint', error);
         }
+  } else if (message.action === 'delete_checkpoint') {
+    showToast('Checkpoint Deleted');
   }
 });

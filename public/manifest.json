@@ -41,21 +41,30 @@
   "commands": {
     "save_checkpoint": {
       "suggested_key": {
-        "default": "Alt+Shift+S",
-        "mac": "Alt+Shift+S",
-        "windows": "Alt+Shift+S",
-        "linux": "Alt+Shift+S"
+        "default": "Alt+S",
+        "mac": "Alt+S",
+        "windows": "Alt+S",
+        "linux": "Alt+S"
       },
       "description": "Save current scroll position"
     },
     "jump_checkpoint": {
       "suggested_key": {
-        "default": "Alt+Shift+J",
-        "mac": "Alt+Shift+J",
-        "windows": "Alt+Shift+J",
-        "linux": "Alt+Shift+J"
+        "default": "Alt+J",
+        "mac": "Alt+J",
+        "windows": "Alt+J",
+        "linux": "Alt+J"
       },
       "description": "Jump to saved scroll position"
+    },
+    "delete_checkpoint": {
+      "suggested_key": {
+        "default": "Alt+X",
+        "mac": "Alt+X",
+        "windows": "Alt+X",
+        "linux": "Alt+X"
+      },
+      "description": "Delete the saved scroll position"
     }
   }
 }

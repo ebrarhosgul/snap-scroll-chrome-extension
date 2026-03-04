@@ -1,8 +1,12 @@
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command === 'save_checkpoint' || command === 'jump_checkpoint') {
+  if (['save_checkpoint', 'jump_checkpoint', 'delete_checkpoint'].includes(command)) {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     
     if (tab?.id) {
+      if (command === 'delete_checkpoint' && tab.url) {
+        chrome.storage.local.remove(tab.url.split('#')[0]);
+      }
+      
       try {
         await chrome.tabs.sendMessage(tab.id, { action: command });
       } catch (error) {
