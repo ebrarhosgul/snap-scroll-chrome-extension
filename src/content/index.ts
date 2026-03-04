@@ -34,6 +34,17 @@ chrome.runtime.onMessage.addListener(async (message) => {
   const currentUrl = window.location.href.split('#')[0];
 
   if (message.action === 'save_checkpoint') {
+    const maxScroll = Math.max(
+      document.body.scrollHeight, 
+      document.documentElement.scrollHeight
+    ) - window.innerHeight;
+
+    if (maxScroll <= 0) {
+      showToast('Page is not scrollable');
+
+      return;
+    }
+
     const currentScroll = window.scrollY;
     
     try {
