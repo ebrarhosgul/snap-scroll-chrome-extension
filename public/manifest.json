@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "SnapScroll",
+  "version": "1.0.0",
+  "description": "Mark a scroll checkpoint and snap back to it instantly.",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "webNavigation",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "commands": {
+    "save_checkpoint": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S",
+        "windows": "Alt+Shift+S",
+        "linux": "Alt+Shift+S"
+      },
+      "description": "Save current scroll position"
+    },
+    "jump_checkpoint": {
+      "suggested_key": {
+        "default": "Alt+Shift+J",
+        "mac": "Alt+Shift+J",
+        "windows": "Alt+Shift+J",
+        "linux": "Alt+Shift+J"
+      },
+      "description": "Jump to saved scroll position"
+    }
+  }
+}
