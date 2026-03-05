@@ -120,14 +120,6 @@ chrome.runtime.onMessage.addListener(async (message) => {
 
                 let targetY = checkpoint.scrollY;
                 
-                if (checkpoint.maxScroll && currentMaxScroll > checkpoint.maxScroll) {
-                    const distanceFromBottom = checkpoint.maxScroll - checkpoint.scrollY;
-                    
-                    if (distanceFromBottom < 1000) {
-                      targetY = currentMaxScroll - distanceFromBottom;
-                    }
-                }
-                
                 targetY = Math.min(Math.max(0, targetY), currentMaxScroll);
                 
                 container.scrollTo({
