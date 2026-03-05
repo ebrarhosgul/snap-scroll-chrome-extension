@@ -49,7 +49,7 @@ const getScrollableContainer = (): Element | Window => {
 
       if (overflowY === 'auto' || overflowY === 'scroll') {
         const rect = el.getBoundingClientRect();
-        
+
         const visibleWidth = Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
         const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
 
@@ -122,7 +122,10 @@ chrome.runtime.onMessage.addListener(async (message) => {
                 
                 if (checkpoint.maxScroll && currentMaxScroll > checkpoint.maxScroll) {
                     const distanceFromBottom = checkpoint.maxScroll - checkpoint.scrollY;
-                    targetY = currentMaxScroll - distanceFromBottom;
+                    
+                    if (distanceFromBottom < 1000) {
+                      targetY = currentMaxScroll - distanceFromBottom;
+                    }
                 }
                 
                 targetY = Math.min(Math.max(0, targetY), currentMaxScroll);
