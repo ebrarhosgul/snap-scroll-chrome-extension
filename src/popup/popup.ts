@@ -5,6 +5,8 @@ const statusContainer = document.getElementById('status-container') as HTMLDivEl
 const btnJump = document.getElementById('btn-jump') as HTMLButtonElement;
 const btnSave = document.getElementById('btn-save') as HTMLButtonElement;
 const btnDelete = document.getElementById('btn-delete') as HTMLButtonElement;
+const shortcutsContainer = document.getElementById('shortcuts-container') as HTMLDivElement;
+const settingsLink = document.getElementById('settings-link') as HTMLAnchorElement;
 
 const sendActionToContentScript = async (action: 'save_checkpoint' | 'jump_checkpoint') => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -101,4 +103,42 @@ btnDelete.addEventListener('click', async () => {
   renderState(null);
 });
 
-document.addEventListener('DOMContentLoaded', initPopup);
+const renderCommands = async () => {
+  try {
+    const commands = await chrome.commands.getAll();
+    shortcutsContainer.innerHTML = '';
+
+    const labelMap: Record<string, string> = {
+      'save_checkpoint': 'Save/Update:',
+      'jump_checkpoint': 'Jump back:',
+      'delete_checkpoint': 'Delete:'
+    };
+
+    commands.forEach(cmd => {
+      if (!cmd.name || !labelMap[cmd.name]) return;
+      
+      const label = labelMap[cmd.name];
+      const shortcut = cmd.shortcut || 'Not set';
+      
+      shortcutsContainer.innerHTML += `
+        <div class="shortcut-row">
+          <span>${label}</span>
+          <kbd>${shortcut}</kbd>
+        </div>
+      `;
+    });
+  } catch (error) {
+    console.error('Failed to load commands', error);
+  }
+};
+
+settingsLink.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await initPopup();
+  await renderCommands();
+});

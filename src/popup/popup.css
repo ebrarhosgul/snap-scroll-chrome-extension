@@ -144,3 +144,20 @@ kbd {
   font-size: 0.75rem;
   box-shadow: 0 2px 0 var(--border);
 }
+
+.settings-link-wrapper {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.settings-link {
+  font-size: 0.75rem;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.settings-link:hover {
+  text-decoration: underline;
+  color: var(--primary-hover);
+}
