@@ -38,8 +38,9 @@ const getScrollableContainer = (): Element | Window => {
   }
 
   const elements = document.querySelectorAll('*');
-  let maxArea = 0;
+  let maxScore = 0;
   let bestContainer: Element | null = null;
+  const viewportCenterX = window.innerWidth / 2;
 
   for (const el of elements) {
     if (el.scrollHeight > el.clientHeight) {
@@ -48,10 +49,18 @@ const getScrollableContainer = (): Element | Window => {
 
       if (overflowY === 'auto' || overflowY === 'scroll') {
         const rect = el.getBoundingClientRect();
-        const area = rect.width * rect.height;
+        
+        const visibleWidth = Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
+        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
 
-        if (area > maxArea) {
-          maxArea = area;
+        if (visibleWidth <= 0 || visibleHeight <= 0) continue;
+
+        const area = visibleWidth * visibleHeight;
+        const isCentral = rect.left < viewportCenterX && rect.right > viewportCenterX;
+        const score = area * visibleWidth * (isCentral ? 2 : 1);
+
+        if (score > maxScore) {
+          maxScore = score;
           bestContainer = el;
         }
       }
