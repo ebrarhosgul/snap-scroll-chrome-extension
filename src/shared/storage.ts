@@ -1,8 +1,8 @@
 import type { Checkpoint } from './types';
 import { EXPIRATION_TIME } from './constants';
 
-export const saveCheckpoint = async (url: string, scrollY: number): Promise<void> => {
-  const data: Checkpoint = { url, scrollY, timestamp: Date.now() };
+export const saveCheckpoint = async (url: string, scrollY: number, maxScroll: number): Promise<void> => {
+  const data: Checkpoint = { url, scrollY, maxScroll, timestamp: Date.now() };
 
   await chrome.storage.local.set({ [url]: data });
 };
