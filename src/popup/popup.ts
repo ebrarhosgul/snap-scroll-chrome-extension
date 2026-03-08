@@ -55,7 +55,7 @@ const renderState = (checkpoint: any | null) => {
 
     statusContainer.innerHTML = `
       <div class="checkpoint-details">
-        <strong style="color: var(--primary); font-size: 1.1rem;">✨ Checkpoint Active</strong>
+        <strong>Checkpoint Active</strong>
         <span style="opacity: 0.8; margin-top: 4px;">Saved today at ${date}</span>
       </div>
     `;
