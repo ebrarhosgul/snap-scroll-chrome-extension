@@ -13,10 +13,8 @@ jobs:
           node-version: "18.x"
       - run: npm ci
       - run: npm run build
-      - name: Zip Build
-        run: cd dist && zip -r ../snapscroll-extension.zip * .* -x "../*"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: snapscroll-extension
-          path: snapscroll-extension.zip
+          path: dist/
