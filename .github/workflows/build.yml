@@ -14,8 +14,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Zip Build
-        # We only need to zip the contents of the `dist` directory since Vite already copies `public/` files (like manifest.json and icons) into it.
-        run: cd dist && zip -r ../snapscroll-extension.zip .
+        run: cd dist && zip -r ../snapscroll-extension.zip * .* -x "../*"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
