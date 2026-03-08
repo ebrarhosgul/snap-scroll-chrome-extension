@@ -1,6 +1,6 @@
 # Snap Scroll Chrome Extension
 
-![Snap Scroll Banner](./assets/banner.png)
+<img src="./assets/banner.png" width="100%" alt="Snap Scroll Banner">
 
 Snap Scroll is a lightweight, privacy-focused Chrome Extension that allows users to instantly save and return to specific scroll positions on any webpage or Single Page Application (SPA).
 
