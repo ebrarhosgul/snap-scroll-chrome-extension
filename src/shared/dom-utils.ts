@@ -55,3 +55,36 @@ export const getScrollInfo = (container: Element | Window) => {
     };
   }
 };
+
+export const clearAnchorElements = () => {
+  const existingAnchors = document.querySelectorAll('[data-snap-target]');
+
+  existingAnchors.forEach(el => el.removeAttribute('data-snap-target'));
+};
+
+export const markAnchorElement = (): boolean => {
+  clearAnchorElements();
+
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  let element = document.elementFromPoint(centerX, centerY);
+
+  while (element && (element === document.body || element === document.documentElement || element.tagName === 'MAIN')) {
+    element = document.elementFromPoint(centerX, centerY + 100) || document.elementFromPoint(centerX, centerY - 100);
+
+    break;
+  }
+  
+  if (element && element !== document.body && element !== document.documentElement) {
+    element.setAttribute('data-snap-target', 'true');
+
+    return true;
+  }
+  
+  return false;
+};
+
+export const getAnchorElement = (): Element | null => {
+  return document.querySelector('[data-snap-target="true"]');
+};

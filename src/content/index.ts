@@ -1,5 +1,5 @@
 import { saveCheckpoint, getCheckpoint } from '../shared/storage';
-import { getScrollableContainer, getScrollInfo } from '../shared/dom-utils';
+import { getScrollableContainer, getScrollInfo, markAnchorElement, getAnchorElement } from '../shared/dom-utils';
 import './toast.css';
 
 const showToast = (message: string, durationMs = 2500) => {
@@ -31,6 +31,17 @@ const showToast = (message: string, durationMs = 2500) => {
   }, durationMs);
 };
 
+const calculateTargetPosition = (checkpointY: number, checkpointMax: number, currentMax: number): number => {
+  if (checkpointMax > currentMax + 1500) {
+    const distanceFromBottom = checkpointMax - checkpointY;
+    const targetY = currentMax - distanceFromBottom;
+
+    return targetY < 0 ? 0 : targetY;
+  }
+
+  return Math.min(Math.max(0, checkpointY), currentMax);
+};
+
 chrome.runtime.onMessage.addListener(async (message) => {
   const currentUrl = window.location.href.split('#')[0];
 
@@ -45,6 +56,8 @@ chrome.runtime.onMessage.addListener(async (message) => {
     }
     
     try {
+      markAnchorElement();
+
       await saveCheckpoint(currentUrl, scrollTop, maxScroll);
 
       showToast('Checkpoint Saved!');
@@ -54,33 +67,43 @@ chrome.runtime.onMessage.addListener(async (message) => {
       showToast('Failed to save checkpoint');
     }
   } else if (message.action === 'jump_checkpoint') {
-        try {
-            const checkpoint = await getCheckpoint(currentUrl);
-            
-            if (checkpoint) {
-                const container = getScrollableContainer();
-                const { maxScroll: currentMaxScroll } = getScrollInfo(container);
+    try {
+      const checkpoint = await getCheckpoint(currentUrl);
 
-                let targetY = checkpoint.scrollY;
-                
-                targetY = Math.min(Math.max(0, targetY), currentMaxScroll);
-                
-                container.scrollTo({
-                    top: targetY,
-                    behavior: 'smooth'
-                });
+      if (!checkpoint) {
+        showToast('No valid checkpoint found');
 
-                if (checkpoint.scrollY > targetY) {
-                    showToast('Jumped to closest possible point');
-                } else {
-                    showToast('Restored Checkpoint!');
-                }
-            } else {
-                showToast('No valid checkpoint found');
-            }
-        } catch (error) {
-            console.error('SnapScroll: Failed to get checkpoint', error);
-        }
+        return;
+      }
+
+      const container = getScrollableContainer();
+      const anchoredEl = getAnchorElement();
+      
+      if (anchoredEl) {
+        anchoredEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        showToast('Restored Checkpoint');
+
+        return;
+      }
+
+      const { maxScroll: currentMaxScroll } = getScrollInfo(container);
+      const targetY = calculateTargetPosition(
+        checkpoint.scrollY, 
+        checkpoint.maxScroll, 
+        currentMaxScroll
+      );
+
+      container.scrollTo({ top: targetY, behavior: 'smooth' });
+
+      if (checkpoint.scrollY > targetY) {
+        showToast('Jumped to closest point');
+      } else {
+        showToast('Restored Checkpoint');
+      }
+    } catch (error) {
+      console.error('SnapScroll: Failed to get checkpoint', error);
+    }
   } else if (message.action === 'delete_checkpoint') {
     showToast('Checkpoint Deleted');
   }
