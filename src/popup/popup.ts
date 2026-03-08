@@ -48,10 +48,6 @@ const renderState = (checkpoint: any | null) => {
   statusContainer.innerHTML = '';
   
   if (checkpoint) {
-    const scrollPercent = checkpoint.scrollY > 0 
-      ? `at ~${Math.round(checkpoint.scrollY)}px down` 
-      : 'at the very top';
-
     const date = new Date(checkpoint.timestamp).toLocaleTimeString([], { 
         hour: '2-digit', 
         minute: '2-digit' 
@@ -59,9 +55,8 @@ const renderState = (checkpoint: any | null) => {
 
     statusContainer.innerHTML = `
       <div class="checkpoint-details">
-        <strong>Checkpoint Active</strong>
-        <span>Saved ${scrollPercent}</span>
-        <span>Today at ${date}</span>
+        <strong style="color: var(--primary); font-size: 1.1rem;">✨ Checkpoint Active</strong>
+        <span style="opacity: 0.8; margin-top: 4px;">Saved today at ${date}</span>
       </div>
     `;
 
