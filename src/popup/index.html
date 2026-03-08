@@ -1,51 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SnapScroll</title>
-  <link rel="stylesheet" href="./popup.css" />
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>SnapScroll</h1>
-    </header>
-    
-    <main>
-      <div id="status-container" class="status-container">
-        <!-- Content injected via TS -->
-        <p class="loading">Checking status...</p>
-      </div>
-      
-      <div class="actions">
-        <button id="btn-jump" class="btn btn-primary hidden">Jump to Checkpoint</button>
-        <button id="btn-save" class="btn hidden">Save Here</button>
-        <button id="btn-delete" class="btn btn-danger hidden">Delete Checkpoint</button>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snap Scroll</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Snap Scroll</h1>
+      </header>
 
-      <div class="shortcuts" id="shortcuts-container">
-        <!-- Rendered dynamically via TS -->
-      </div>
-      
-      <div class="settings-link-wrapper">
-        <a href="#" id="settings-link" class="settings-link">Change Shortcuts</a>
-      </div>
-    </main>
+      <main>
+        <div id="status-container" class="status-container">
+          <!-- Content injected via TS -->
+          <p class="loading">Checking status...</p>
+        </div>
 
-    <footer class="popup-footer">
-      <div class="footer-links-row">
-        <a href="https://github.com/ebrarhosgul/snap-scroll-chrome-extension/issues" target="_blank" class="footer-link">
-          Report Issue
-        </a>
-        <span class="footer-separator">|</span>
-        <a href="https://github.com/ebrarhosgul/snap-scroll-chrome-extension" target="_blank" class="footer-link">
-          Source Code
-        </a>
-      </div>
-    </footer>
-  </div>
-  
-  <script type="module" src="./popup.ts"></script>
-</body>
+        <div class="actions">
+          <button id="btn-jump" class="btn btn-primary hidden">
+            Jump to Checkpoint
+          </button>
+          <button id="btn-save" class="btn hidden">Save Here</button>
+          <button id="btn-delete" class="btn btn-danger hidden">
+            Delete Checkpoint
+          </button>
+        </div>
+
+        <div class="shortcuts" id="shortcuts-container">
+          <!-- Rendered dynamically via TS -->
+        </div>
+
+        <div class="settings-link-wrapper">
+          <a href="#" id="settings-link" class="settings-link"
+            >Change Shortcuts</a
+          >
+        </div>
+      </main>
+
+      <footer class="popup-footer">
+        <div class="footer-links-row">
+          <a
+            href="https://github.com/ebrarhosgul/snap-scroll-chrome-extension/issues"
+            target="_blank"
+            class="footer-link"
+          >
+            Report Issue
+          </a>
+          <span class="footer-separator">|</span>
+          <a
+            href="https://github.com/ebrarhosgul/snap-scroll-chrome-extension"
+            target="_blank"
+            class="footer-link"
+          >
+            Source Code
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="./popup.ts"></script>
+  </body>
 </html>

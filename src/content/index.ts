@@ -62,7 +62,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
 
       showToast('Checkpoint Saved!');
     } catch (error) {
-      console.error('SnapScroll: Failed to save checkpoint', error);
+      console.error('Snap Scroll: Failed to save checkpoint', error);
 
       showToast('Failed to save checkpoint');
     }
@@ -102,7 +102,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
         showToast('Restored Checkpoint');
       }
     } catch (error) {
-      console.error('SnapScroll: Failed to get checkpoint', error);
+      console.error('Snap Scroll: Failed to get checkpoint', error);
     }
   } else if (message.action === 'delete_checkpoint') {
     showToast('Checkpoint Deleted');

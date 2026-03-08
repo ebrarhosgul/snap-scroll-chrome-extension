@@ -29,7 +29,7 @@ const initPopup = async () => {
     currentUrl = tab.url.split('#')[0];
     
     if (currentUrl.startsWith('chrome://') || currentUrl.startsWith('edge://')) {
-      renderError('SnapScroll does not work on internal browser pages.');
+      renderError('Snap Scroll does not work on internal browser pages.');
 
       return;
     }

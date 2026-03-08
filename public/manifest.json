@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "SnapScroll",
+  "name": "Snap Scroll",
   "version": "1.0.0",
   "description": "Mark a scroll checkpoint and snap back to it instantly.",
   "icons": {

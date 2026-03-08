@@ -1,10 +1,12 @@
-# SnapScroll Chrome Extension
+# Snap Scroll Chrome Extension
 
-SnapScroll is a lightweight, privacy-focused Chrome Extension that allows users to instantly save and return to specific scroll positions on any webpage or Single Page Application (SPA).
+![Snap Scroll Banner](./assets/banner.png)
+
+Snap Scroll is a lightweight, privacy-focused Chrome Extension that allows users to instantly save and return to specific scroll positions on any webpage or Single Page Application (SPA).
 
 ## Overview
 
-Navigating long documents, documentation pages, or infinite-scrolling AI chat interfaces (like ChatGPT, Gemini, or Claude) often involves tedious manual scrolling to find a previous context. SnapScroll solves this by letting you drop a temporary checkpoint anywhere on the page using a keyboard shortcut. You can then navigate away, read other sections, and instantly jump back to your exact checkpoint with another shortcut.
+Navigating long documents, documentation pages, or infinite-scrolling AI chat interfaces (like ChatGPT, Gemini, or Claude) often involves tedious manual scrolling to find a previous context. Snap Scroll solves this by letting you drop a temporary checkpoint anywhere on the page using a keyboard shortcut. You can then navigate away, read other sections, and instantly jump back to your exact checkpoint with another shortcut.
 
 ## Key Features
 
