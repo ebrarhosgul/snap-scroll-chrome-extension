@@ -1,6 +1,14 @@
 # Snap Scroll Chrome Extension
 
-<img src="./assets/banner.png" width="100%" alt="Snap Scroll Banner">
+<a href="https://chromewebstore.google.com/detail/snap-scroll/icopcdefcehhlpeadkibnnndnionkkgf">
+  <img src="./assets/banner.png" width="100%" alt="Snap Scroll Banner">
+</a>
+
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/snap-scroll/icopcdefcehhlpeadkibnnndnionkkgf">
+    <strong>Available in the Chrome Web Store</strong>
+  </a>
+</p>
 
 Snap Scroll is a lightweight, privacy-focused Chrome Extension that allows users to instantly save and return to specific scroll positions on any webpage or Single Page Application (SPA).
 
@@ -12,7 +20,6 @@ Navigating long documents, documentation pages, or infinite-scrolling AI chat in
 
 - **Instant Checkpointing:** Save your exact X/Y scroll coordinate with a single keystroke.
 - **Smart SPA Support:** Intelligently detects custom scrollable containers (like sidebars vs main chat areas) in modern Web Apps, ignoring standard window scroll limits when necessary.
-- **Dynamic Growth Handling:** Automatically calculates distance-from-bottom metrics to keep your checkpoints accurate even when new content (like AI responses) continuously expands the bottom of the page.
 - **Customizable Shortcuts:** Fully customizable keybindings integrated directly into Chrome's native extension shortcut engine.
 - **Non-Intrusive UI:** Operates entirely in the background and via pure-CSS toast notifications. Zero heavy UI libraries or dependencies injected into the host page.
 - **Privacy First:** Checkpoints are stored strictly in `chrome.storage.local`. No data ever leaves your device or browser. Data automatically expires entirely after 24 hours.
