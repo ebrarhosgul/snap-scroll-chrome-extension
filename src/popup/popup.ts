@@ -1,4 +1,5 @@
 import { getCheckpoint } from '../shared/storage';
+import { renderCommands } from '../shared/shortcuts';
 
 let currentUrl = '';
 const statusContainer = document.getElementById('status-container') as HTMLDivElement;
@@ -98,35 +99,6 @@ btnDelete.addEventListener('click', async () => {
   renderState(null);
 });
 
-const renderCommands = async () => {
-  try {
-    const commands = await chrome.commands.getAll();
-    shortcutsContainer.innerHTML = '';
-
-    const labelMap: Record<string, string> = {
-      'save_checkpoint': 'Save/Update:',
-      'jump_checkpoint': 'Jump back:',
-      'delete_checkpoint': 'Delete:'
-    };
-
-    commands.forEach(cmd => {
-      if (!cmd.name || !labelMap[cmd.name]) return;
-      
-      const label = labelMap[cmd.name];
-      const shortcut = cmd.shortcut || 'Not set';
-      
-      shortcutsContainer.innerHTML += `
-        <div class="shortcut-row">
-          <span>${label}</span>
-          <kbd>${shortcut}</kbd>
-        </div>
-      `;
-    });
-  } catch (error) {
-    console.error('Failed to load commands', error);
-  }
-};
-
 settingsLink.addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -135,5 +107,7 @@ settingsLink.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initPopup();
-  await renderCommands();
+  if (shortcutsContainer) {
+    await renderCommands(shortcutsContainer);
+  }
 });

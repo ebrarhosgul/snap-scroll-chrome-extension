@@ -125,7 +125,7 @@ header h1 {
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column-reverse;
-  gap: 8px;
+  gap: 20px;
 }
 
 .shortcut-row {

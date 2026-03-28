@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Snap Scroll</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/icons/128.png" alt="Snap Scroll Logo" class="logo">
+            <h1>Welcome to Snap Scroll!</h1>
+            <p class="subtitle">Your instant scroll checkpoint manager.</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>How to Use</h2>
+                <p class="instruction-text text-center">Use the following keyboard shortcuts to manage your scroll positions.</p>
+                <div class="shortcuts" id="shortcuts-container">
+                    <!-- Rendered dynamically via TS -->
+                </div>
+                
+                <div class="settings-link-wrapper">
+                    <a href="#" id="settings-link" class="settings-link">Change Shortcuts</a>
+                </div>
+                
+                <div class="context-hint">
+                    <p>💡 Tip: You can also right-click anywhere on the page to use the Context Menu!</p>
+                    <img src="../../assets/context-menu-integration.png" alt="Context Menu Example" class="context-menu-img">
+                </div>
+            </section>
+
+            <section class="card repo-section">
+                <h2>Want to try it out?</h2>
+                <p>Test the extension on a long page, such as our open-source repository.</p>
+                <a href="https://github.com/ebrarhosgul/snap-scroll-chrome-extension" target="_blank" class="btn btn-primary">
+                    Visit the GitHub Repository
+                </a>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="./index.ts"></script>
+</body>
+</html>
