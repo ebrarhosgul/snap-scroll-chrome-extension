@@ -34,7 +34,8 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           popup: resolve('src/popup/index.html'),
-          background: resolve('src/background/service-worker.ts')
+          background: resolve('src/background/service-worker.ts'),
+          onboarding: resolve('src/onboarding/index.html')
         },
         output: {
           entryFileNames: (chunkInfo) => {
